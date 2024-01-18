@@ -2,11 +2,20 @@
   import { pbStore } from "../lib/store";
   import Button from "../components/Button.svelte";
 
+  
+  let emailValue, passwordValue;
 
   function login(ev) {
     ev.preventDefault();
-    console.log($pbStore)
-    alert('oi')
+
+    const authData = $pbStore.collection('users')
+      .authWithPassword(
+        emailValue,
+        passwordValue
+      )
+      .then(res => {
+        localStorage.token = res.token
+      })
   }
 </script>
 <main>
@@ -22,11 +31,11 @@
       <form on:submit={login}>
         <div class="form-group">
           <label for="email">E-mail</label>
-          <input required placeholder="Insira seu e-mail" class="input" type="email" name="email" id="email">
+          <input bind:value={emailValue} required placeholder="Insira seu e-mail" class="input" type="email" name="email" id="email">
         </div>
         <div class="form-group">
           <label for="password">Senha</label>
-          <input required class="input" placeholder="Insira sua senha" type="password" name="password" id="password">
+          <input bind:value={passwordValue} required class="input" placeholder="Insira sua senha" type="password" name="password" id="password">
         </div>
         <Button submitButton={true} text="Entrar" />
       </form>

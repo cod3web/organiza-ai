@@ -5,7 +5,7 @@ function createPbStore(baseUrl, authStore, lang) {
 	const store = writable();
 	
 	function set(baseUrl, authStore, lang){
-		const pb = new PocketBase(window.location.origin);
+		const pb = new PocketBase(baseUrl);
 			
 		if ((document.cookie||"").length) pb.authStore.loadFromCookie(document.cookie);
 		store.set(pb);
