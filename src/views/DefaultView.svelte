@@ -19,7 +19,7 @@
     width: 100%;
     background-color: white;
     height: 100vh;
-    border-radius: 30px;
+    border-radius: 24px 0 0 0;
     padding: 24px;
   }
   .page-wrapper {

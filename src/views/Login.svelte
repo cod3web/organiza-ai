@@ -16,7 +16,10 @@
       )
       .then(res => {
         localStorage.token = res.token
+        console.log(res)
         if(localStorage.token) {
+          localStorage.userEmail = res.record.email;
+          localStorage.userName = res.record.name;
           push('/app')
         }
       })
