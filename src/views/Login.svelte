@@ -25,9 +25,9 @@
     </div>
 
     <div class="right-part">
-      <h1 class="title">Lorem Ipsum</h1>
+      <h1 class="title">Proartivo</h1>
       <h2 class="subtitle">Entrar na sua conta</h2>
-      <p class="intro">Lorem ipsum is simply dummy text of the printing.</p>
+      <p class="intro">Você está a um passo de organizar tudo da sua lojinha!</p>
       <form on:submit={login}>
         <div class="form-group">
           <label for="email">E-mail</label>
@@ -94,6 +94,7 @@
   .intro {
     color: #B8B8B8;
     font-size: 16px;
+    text-align: center;
   }
 
   @media screen and (max-width: 992px) {
@@ -101,6 +102,7 @@
       background: white;
     }
     .right-part {
+      margin-top: 50px;
       width: 100%;
     }
     .left-part {
