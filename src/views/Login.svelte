@@ -95,4 +95,16 @@
     color: #B8B8B8;
     font-size: 16px;
   }
+
+  @media screen and (max-width: 992px) {
+    section {
+      background: white;
+    }
+    .right-part {
+      width: 100%;
+    }
+    .left-part {
+      display: none;
+    }
+  }
 </style>
