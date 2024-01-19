@@ -1,6 +1,7 @@
 <script>
   import { pbStore } from "../lib/store";
   import Button from "../components/Button.svelte";
+  import { push } from "svelte-spa-router";
 
   
   let emailValue, passwordValue;
@@ -15,6 +16,9 @@
       )
       .then(res => {
         localStorage.token = res.token
+        if(localStorage.token) {
+          push('/app')
+        }
       })
   }
 </script>
@@ -24,7 +28,7 @@
       <div class="overlay">
         <div class="overlay-content">
           <h1>Seja muito bem-vindo(a)</h1>
-          <p>Transforme sua paixão em negócio. Simplificamos, você cria. Descubra o poder do Proartivo para impulsionar o seu artesanato.</p>
+          <p>Transforme sua paixão em negócio. Simplificamos, você <b>cria</b>. Descubra o poder do <a href="https://proartivo.codewebstudios.com.br" target="_blank">Proartivo</a> para impulsionar o seu artesanato.</p>
         </div>
 
       </div>
@@ -54,8 +58,6 @@
 <style>
   section {
     display: flex;
-    background: linear-gradient(to right, #151561 50%, white 50%);
-
   }
   video {
     object-fit: cover;
@@ -65,6 +67,7 @@
     width: 100% !important;
     max-width: 100% !important;
     top: 0;
+    border-radius: 0 200px 185px 0;
     left: 0;
     background-color: #000;
   }
@@ -72,7 +75,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
+    width: calc(100% + 20px);
     z-index: 200;
     color: white;
     display: flex;
@@ -80,6 +83,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    border-radius: 0 100px 85px 0;
     background-color: rgba(83, 51, 223, 0.4);
   }
   .overlay .overlay-content {
@@ -99,6 +103,7 @@
     font-size: 18px;
     line-height: 1.5;
     max-width: 800px;
+    font-weight: 600;
   }
   section > * {
     width: 50%;
