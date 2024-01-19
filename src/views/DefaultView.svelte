@@ -17,7 +17,7 @@
 <style>
   main {
     width: 100%;
-    background-color: white;
+    background-color: #F6F7FB;
     height: 100vh;
     border-radius: 24px 0 0 0;
     padding: 24px;
