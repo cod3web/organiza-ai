@@ -25,6 +25,10 @@
       })
   }
 </script>
+<svelte:head>
+  <title>Entrar | Proartivo</title>
+</svelte:head>
+
 <main>
   <section>
     <div class="left-part">

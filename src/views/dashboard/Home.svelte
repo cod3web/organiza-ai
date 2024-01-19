@@ -6,7 +6,9 @@ import Card from "../../components/Card.svelte";
 
   
 </script>
-
+<svelte:head>
+  <title>Painel | Proartivo</title>
+</svelte:head>
 <header>
   <h1>Painel</h1>
 </header>
