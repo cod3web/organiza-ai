@@ -51,7 +51,7 @@
     </div>
     <div class="form-group">
       <label for="">Observações</label>
-      <textarea bind:value={customerInfo.notes} class="input" type="text" />
+      <textarea rows="8" bind:value={customerInfo.notes} class="input" type="text" />
     </div>
 
     <Button submitButton={true} text="Criar cliente"/>

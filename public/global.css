@@ -21,7 +21,9 @@ ul {
 a {
 	color: unset;
 }
-
+textarea {
+	resize: none;
+}
 .input {
 	border: 1px solid #E6E6E6;
 	border-radius: 8px;
