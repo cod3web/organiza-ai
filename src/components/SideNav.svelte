@@ -24,7 +24,7 @@
 
 <style>
   aside {
-    min-width: 360px;
+    min-width: 240px;
     padding: 24px;
     color: white;
     display: flex;

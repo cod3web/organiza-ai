@@ -9,10 +9,9 @@ import Card from "../../components/Card.svelte";
 <svelte:head>
   <title>Painel | Proartivo</title>
 </svelte:head>
-<header>
-  <h1>Painel</h1>
+<header class="header-admin" style="margin-bottom: 30px;">
+  <h1>Olá, {firstName}</h1>
 </header>
-<h2 class="greetings">Olá, {firstName}!</h2>
 
 <Card>
   <div class="card-header" slot="card-header">
@@ -32,13 +31,7 @@ import Card from "../../components/Card.svelte";
     margin-top: 24px;
     margin-bottom: 48px;
   }
-  header {
-    padding: 20px 0;
-    border-bottom: 1px solid #EBEBF9;
-  }
-  header h1 {
-    font-size: 28px;
-  }
+
   .card-body {
     display: flex;
     flex-direction: column;

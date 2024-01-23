@@ -43,3 +43,11 @@ a {
 	color: #B8B8B8;
 	margin-top: 20px;
 }
+
+.header-admin {
+    padding: 20px 0;
+	border-bottom: 1px solid #EBEBF9;
+}
+.header-admin h1 {
+	font-size: 28px;
+}

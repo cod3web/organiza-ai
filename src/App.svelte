@@ -7,7 +7,7 @@
 	pbStore.set('https://cool-art.pockethost.io/');
 
 	beforeUpdate(() => {
-		if(window.location.pathname == '/' && localStorage.token) {
+		if(window.location.hash == '' && localStorage.token) {
 			push('/app')
 		}
 	})
