@@ -1,10 +1,12 @@
 <script>
-    export let active = false;
+    export let active = true;
 </script>
 
 <div class="backdrop" class:active>
     <div class="card-modal">
-
+        <slot name="card-header"></slot>
+        <slot name="card-body"></slot>
+        <slot name="card-footer"></slot>
     </div>
 </div>
 
@@ -33,7 +35,8 @@
     .card-modal {
         background: white;
         width: 600px;
+        padding: 40px;
         height: 800px;
-        border-radius: 20px;
+        border-radius: 12px;
     }
 </style>

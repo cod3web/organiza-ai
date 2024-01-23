@@ -5,7 +5,7 @@
   import Modal from "../../components/Modal.svelte";
 
   let customers = [],
-      newCustomerShow = false;
+      newCustomerShow = true;
 
   const showCustomerModal = () => {
     newCustomerShow = true;
@@ -23,7 +23,32 @@
   <h1>Clientes</h1>
   <Button text="+ Novo cliente" onClick={showCustomerModal} />
 </header>
-<Modal active={newCustomerShow}/>
+<Modal active={newCustomerShow}>
+  <div slot="card-header">
+    <h2>Cadastrar novo cliente</h2>
+  </div>
+
+  <form class="form-customer" slot="card-body">
+    <div class="form-group">
+      <label for="">Nome</label>
+      <input class="input" type="text">
+    </div>
+    <div class="form-group">
+      <label for="">Telefone</label>
+      <input class="input" type="text">
+    </div>
+    <div class="form-group">
+      <label for="">E-mail</label>
+      <input class="input" type="email">
+    </div>
+    <div class="form-group">
+      <label for="">Observações</label>
+      <textarea class="input" type="text" />
+    </div>
+
+    <Button submitButton={true} text="Criar cliente"/>
+  </form>
+</Modal>
 <table>
   <thead>
     <tr>
@@ -55,6 +80,18 @@
 
 
 <style>
+  .input {
+    width: 100%;
+  }
+  .form-customer {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  label {
+    margin-bottom: 5px;
+  }
   .actions {
     display: flex;
     gap: 24px;
