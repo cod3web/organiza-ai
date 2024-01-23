@@ -1,8 +1,14 @@
 <script>
-    export let active = true;
+  import { createEventDispatcher } from "svelte";
+
+    export let active = false;
+    const dispatch = createEventDispatcher();
+    const closeModal = () => {
+        dispatch('close')
+    }
 </script>
 
-<div class="backdrop" class:active>
+<div class="backdrop" class:active on:click|self={closeModal}>
     <div class="card-modal">
         <slot name="card-header"></slot>
         <slot name="card-body"></slot>
@@ -31,6 +37,9 @@
         height: 100vh;
        
         background-color: rgba(0,0,0,.7);
+    }
+    .backdrop:not(.active) .card-modal {
+        display: none;
     }
     .card-modal {
         background: white;

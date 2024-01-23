@@ -5,7 +5,8 @@
   import Modal from "../../components/Modal.svelte";
 
   let customers = [],
-      newCustomerShow = true;
+      newCustomerShow = false,
+      customerInfo = {full_name: '', email: '', tel: '', notes: ''};
 
   const showCustomerModal = () => {
     newCustomerShow = true;
@@ -14,6 +15,13 @@
     $pbStore.collection('customers').getFullList()
     .then(res => customers = res)
   })
+
+  const addNewCustomer = event => {
+    event.preventDefault();
+
+    $pbStore.collection('customers').create(customerInfo)
+    .then(() => {newCustomerShow = false; window.location.reload()})
+  }
 </script>
 <svelte:head>
   <title>Clientes | Proartivo</title>
@@ -23,27 +31,27 @@
   <h1>Clientes</h1>
   <Button text="+ Novo cliente" onClick={showCustomerModal} />
 </header>
-<Modal active={newCustomerShow}>
+<Modal on:close={() => newCustomerShow = false} active={newCustomerShow}>
   <div slot="card-header">
     <h2>Cadastrar novo cliente</h2>
   </div>
 
-  <form class="form-customer" slot="card-body">
+  <form on:submit={addNewCustomer} class="form-customer" slot="card-body">
     <div class="form-group">
       <label for="">Nome</label>
-      <input class="input" type="text">
+      <input bind:value={customerInfo.full_name} class="input" type="text">
     </div>
     <div class="form-group">
       <label for="">Telefone</label>
-      <input class="input" type="text">
+      <input bind:value={customerInfo.tel} class="input" type="text">
     </div>
     <div class="form-group">
       <label for="">E-mail</label>
-      <input class="input" type="email">
+      <input bind:value={customerInfo.email} class="input" type="email">
     </div>
     <div class="form-group">
       <label for="">Observações</label>
-      <textarea class="input" type="text" />
+      <textarea bind:value={customerInfo.notes} class="input" type="text" />
     </div>
 
     <Button submitButton={true} text="Criar cliente"/>
