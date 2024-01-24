@@ -18,9 +18,13 @@
 
   const addNewCustomer = event => {
     event.preventDefault();
-
+    if (!customerInfo.full_name.length) return;
     $pbStore.collection('customers').create(customerInfo)
     .then(() => {newCustomerShow = false; window.location.reload()})
+  }
+
+  const deleteCustomer = id => {
+    $pbStore.collection('customers').delete(id)
   }
 </script>
 <svelte:head>
@@ -38,8 +42,8 @@
 
   <form on:submit={addNewCustomer} class="form-customer" slot="card-body">
     <div class="form-group">
-      <label for="">Nome</label>
-      <input bind:value={customerInfo.full_name} class="input" type="text">
+      <label for="">Nome <span style="color: red;">*</span></label>
+      <input bind:value={customerInfo.full_name} class="input" type="text" required>
     </div>
     <div class="form-group">
       <label for="">Telefone</label>
@@ -70,15 +74,15 @@
   <tbody>
     {#each customers as customer}
     <tr>
-      <td>{customer.full_name}</td>
-      <td>{customer.email}</td>
-      <td>{customer.tel}</td>
-      <td>{customer.notes}</td>
+      <td>{customer.full_name || '-'}</td>
+      <td>{customer.email || '-'}</td>
+      <td>{customer.tel || '-'}</td>
+      <td>{customer.notes || '-'}</td>
       <td>
         <div class="actions">
           <a href={`https://api.whatsapp.com/send?phone=55${customer.tel}`} target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
           <i class="fa-solid fa-pen-to-square"></i>
-          <i class="fa-solid fa-trash"></i>
+          <i on:click={() => deleteCustomer(customer.id)} class="fa-solid fa-trash"></i>
         </div>
       </td>
     </tr>
